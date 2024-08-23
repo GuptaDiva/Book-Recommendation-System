@@ -3,7 +3,7 @@
 import pickle
 import streamlit as st
 import numpy as np
-
+import pandas as pd
 
 st.header('Book Recommender System Using Unsupervised Machine Learning')
 model = pickle.load(open('Pickle/model.pkl','rb'))
@@ -51,7 +51,7 @@ def fetch_poster_(suggestion):
     poster_url = []
 
     for book_id in suggestion:
-        book_namess.append(book_pivot_table.index[book_id])
+        book_name.append(book_pivot_table.index[book_id])
 
     for name in book_name[0]: 
         ids = np.where(final_books['title'] == name)[0][0]
@@ -81,23 +81,27 @@ def recommend_book_(book_name):
     book_id = np.where(book_pivot_table.index == book_name)[0][0]
     distance, suggestion = model1.kneighbors(book_pivot_table.iloc[book_id,:].values.reshape(1,-1), n_neighbors=100 )
 
-    poster_url = fetch_poster(suggestion)
+    poster_url = fetch_poster_(suggestion)
     
     for i in range(len(suggestion)):
             books = book_pivot_table.index[suggestion[i]]
             for j in books:
                 books_list.append(j)
     return books_list , poster_url  
+#book_name=book_namess[0]
+combined_index = pd.Index(book_names.tolist() + book_namess.tolist())
+
 
 selected_books = st.selectbox(
     "Type or select a book from the dropdown",
-    book_names
+    combined_index
 )
 
 if st.button('Show Recommendation'):
     try:
         recommended_books,poster_url = recommend_book(selected_books)
     except Exception as e:
+        print("genre")
         recommended_books,poster_url = recommend_book_(selected_books)
     col1, col2, col3, col4, col5 = st.columns(5)
     with col1:
