@@ -2,3 +2,4 @@ numpy
 streamlit
 pandas
 compress_pickle
+scikit-learn
