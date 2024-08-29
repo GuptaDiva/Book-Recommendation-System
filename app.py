@@ -21,7 +21,9 @@ with open('Picklec/book_names.pkl', 'rb') as file:
     book_namess = pickle.load(file)
 
 # Load final books
-final_books = cpickle.load('Picklec/final_rating_compressed.lzma', compression='lzma')
+#with open('Picklec/final_rating.pkl', 'rb') as file:
+ #   final_books = pickle.load(file)'''
+final_books = cpickle.load('Picklec/final_rating_compressed.bz2', compression='bz2')
 
 with open('Picklec/book_pivot.pkl', 'rb') as file:
     book_pivot_table = pickle.load(file)
