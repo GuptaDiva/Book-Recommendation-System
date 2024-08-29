@@ -1,3 +1,4 @@
 numpy
 streamlit
-Scikit-learn
+pandas
+compress_pickle

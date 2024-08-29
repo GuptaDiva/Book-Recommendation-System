@@ -1,5 +1,5 @@
 
-
+import compress_pickle as cpickle
 import pickle
 import streamlit as st
 import numpy as np
@@ -21,8 +21,7 @@ with open('Picklec/book_names.pkl', 'rb') as file:
     book_namess = pickle.load(file)
 
 # Load final books
-with open('Picklec/final_rating.pkl', 'rb') as file:
-    final_books = pickle.load(file)
+final_books = cpickle.load('Picklec/final_rating_compressed.lzma', compression='lzma')
 
 with open('Picklec/book_pivot.pkl', 'rb') as file:
     book_pivot_table = pickle.load(file)
