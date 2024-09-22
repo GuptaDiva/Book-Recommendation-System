@@ -41,8 +41,8 @@ To run the Book Recommendation System locally, follow these steps:
 1. **Clone the repository**:
 
 ```bash
-git clone https://github.com/your-username/book-recommender-system.git
-cd book-recommender-system
+git clone https://github.com/GuptaDiva/book-recommendation-system.git
+cd book-recommendation-system
 ```
 
 2. **Create a virtual environment** (optional but recommended):
@@ -158,7 +158,10 @@ If you have any questions, feel free to reach out!
 ![Results to 'Harry Potter'](image-1.png)
 ![Results to 'Lord of the Rings'](image-2.png)
 
+---
 
+### Notes
+- For some of the searches, the name of the book is displayed but no image is there, its because the dataset was a little outdated and some of these images don't exist anymore.
 
 
 
